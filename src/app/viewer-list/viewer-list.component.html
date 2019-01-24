@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="cool-xs-12">
+     <label>
+    Search: <input type="text" #searchBox (keyup)="findSongs(searchBox.value)" [formControl]="textSongControl" class="form-control input-lg well"
+      placeholder="Buscar Canción..." />
+  </label>
+  <label>
+    Currency: <select [formControl]="exchangeCurrencyControl" autofocus>
+      <option [value]="currencyValue" *ngFor="let currencyValue of listCurrency">{{currencyValue}}</option>
+    </select>
+  </label>
+  </div>
+ 
+</div>
+
+<div class="row">
+  <div class="cool-xs-12" *ngIf="listSongs && listSongs.length > 0">
+    <h3>Songs Results</h3>
+    <p *ngFor="let song of listSongs">
+      {{song.trackName}} - {{ changeTrack(song.trackPrice) | currency: currency }}
+    </p>
+  </div>
+</div>
